@@ -1,12 +1,11 @@
-# Number Verse Arena 🎮
+# 1v1 Guessing dApp
 
 A privacy-preserving Player vs Player guessing game powered by **Zama's Fully Homomorphic Encryption (FHE)** technology. Players choose between 1 or 2, with their choices remaining encrypted on-chain until game completion, ensuring complete privacy and fairness in Web3 gaming.
 
-![Number Verse Arena](public/uninum.png)
+![1v1 Guessing](public/uninum.png)
 
-## 🎯 What is Number Verse Arena?
 
-Number Verse Arena is an **FHE-powered Player vs Player guessing game** where two players compete by choosing between 1 or 2. Your choices remain completely private through encryption until the game reveals both selections simultaneously. The winner takes the entire bet amount!
+1v1 Guessing is an **FHE-powered Player vs Player guessing game** where two players compete by choosing between 1 or 2. Your choices remain completely private through encryption until the game reveals both selections simultaneously. The winner takes the entire bet amount!
 
 ### Key Features
 
