@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test FHE Encryption</title>
+</head>
+<body>
+    <h1>Test FHE Encryption</h1>
+    <button id="testBtn">Test FHE Encryption</button>
+    <div id="results"></div>
+
+    <script src="https://unpkg.com/@zama-fhe/relayer-sdk@0.1.0/dist/index.js"></script>
+    <script>
+        async function testFHEEncryption() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Testing FHE encryption...</p>';
+            
+            try {
+                console.log('Initializing FHE SDK...');
+                await window.ZamaFHE.initSDK();
+                
+                const config = {
+                    chainId: 11155111,
+                    networkUrl: "https://sepolia.public.blastapi.io",
+                    relayerUrl: "https://relayer.testnet.zama.cloud",
+                    gatewayUrl: "https://gateway.sepolia.zama.ai/",
+                    aclContractAddress: "0x687820221192C5B662b25367F70076A37bc79b6c",
+                    kmsContractAddress: "0x1364cBBf2cDF5032C47d8226a6f6FBD2AFCDacAC",
+                    inputVerifierContractAddress: "0xbc91f3daD1A5F19F8390c400196e58073B6a0BC4",
+                    verifyingContractAddressDecryption: "0xb6E160B1ff80D67Bfe90A85eE06Ce0A2613607D1",
+                    verifyingContractAddressInputVerification: "0x7048C39f048125eDa9d678AEbaDfB22F7900a29F",
+                };
+                
+                console.log('Creating FHEVM instance...');
+                const instance = await window.ZamaFHE.createInstance(config);
+                
+                console.log('Testing encryption of value 1...');
+                const input = instance.createEncryptedInput();
+                input.addU32(1);
+                
+                const encryptedInput = await input.encrypt();
+                
+                console.log('Encryption successful!');
+                console.log('Data length:', encryptedInput.data.length);
+                console.log('Proof length:', encryptedInput.inputProof.length);
+                console.log('Data:', encryptedInput.data.substring(0, 100) + '...');
+                console.log('Proof:', encryptedInput.inputProof.substring(0, 100) + '...');
+                
+                results.innerHTML = `
+                    <h3>✅ FHE Encryption Successful!</h3>
+                    <p><strong>Data Length:</strong> ${encryptedInput.data.length} characters</p>
+                    <p><strong>Proof Length:</strong> ${encryptedInput.inputProof.length} characters</p>
+                    <p><strong>Data Preview:</strong> ${encryptedInput.data.substring(0, 100)}...</p>
+                    <p><strong>Proof Preview:</strong> ${encryptedInput.inputProof.substring(0, 100)}...</p>
+                `;
+                
+            } catch (error) {
+                console.error('FHE encryption failed:', error);
+                results.innerHTML = `
+                    <h3>❌ FHE Encryption Failed</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p>Falling back to mock encryption for testing...</p>
+                `;
+            }
+        }
+        
+        document.getElementById('testBtn').addEventListener('click', testFHEEncryption);
+    </script>
+</body>
+</html>
