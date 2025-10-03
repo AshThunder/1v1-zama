@@ -113,15 +113,14 @@ The application will be available at `http://localhost:8080`
 - ✅ **Encryption**: Real FHE encryption implemented for player choices
 - ✅ **Production Ready**: Full FHE encryption active and working
 
-## 🌐 Live Demo
 
-### Demo Application
+## Demo application
 - 
 
 ### Smart Contract
 - **Network**: Sepolia Testnet
-- **Contract**: `0x8Fac2e25DFF0B248A19A66Ae8D530613c8Ff6780`
-- **Explorer**: [View on Etherscan](https://sepolia.etherscan.io/address/0x8Fac2e25DFF0B248A19A66Ae8D530613c8Ff6780)
+- **Contract**: `0x9e4fDc01ED76DA781222ccE4427C3d2e2fC01198`
+- **Explorer**: [View on Etherscan](https://sepolia.etherscan.io/address/0x9e4fDc01ED76DA781222ccE4427C3d2e2fC01198)
 - **Repository**: [EVM Contract Source](https://github.com/AshThunder/1v1-zama.git)
 
 ## 📁 Project Structure
